@@ -1,0 +1,58 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Личный кабинет{% endblock %}
+
+{% block content %}
+<div class="profile">
+    <div class="profile-content">
+        <div class="profile-header">
+            <i class="fas fa-user-circle profile-icon"></i>
+            <h1>Личный кабинет</h1>
+            <p>Добро пожаловать, <span class="username">{{ user.username }}</span>!</p>
+        </div>
+        
+        <div class="card data-card">
+            <div class="card-header">
+                <i class="fas fa-database"></i>
+                <h3>Кэшированные данные</h3>
+            </div>
+            <div class="card-body">
+                <pre id="cachedData" class="data-container">Нажмите кнопку "Обновить данные" для загрузки</pre>
+                <button id="refreshData" class="btn btn-refresh"><i class="fas fa-sync-alt"></i> Обновить данные</button>
+            </div>
+        </div>
+        
+        <form id="logoutForm" style="display: none;">
+            {% csrf_token %}
+        </form>
+        <button id="logoutBtn" class="btn btn-danger logout-btn"><i class="fas fa-sign-out-alt"></i> Выйти из системы</button>
+    </div>
+</div>
+
+<!-- Встроенный JavaScript для тестирования -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Проверяем, работает ли встроенный JavaScript
+    console.log('Встроенный скрипт в профиле запущен');
+    
+    // Проверяем, найдены ли элементы DOM
+    const dataContainer = document.getElementById('cachedData');
+    const refreshBtn = document.getElementById('refreshData');
+    
+    if (dataContainer) {
+        console.log('Элемент cachedData найден');
+        dataContainer.innerHTML += '<div style="color:green">JavaScript работает!</div>';
+    } else {
+        console.log('Элемент cachedData НЕ найден');
+    }
+    
+    if (refreshBtn) {
+        console.log('Кнопка refreshData найдена');
+        refreshBtn.innerText += '';
+    } else {
+        console.log('Кнопка refreshData НЕ найдена');
+    }
+});
+</script>
+{% endblock %} 

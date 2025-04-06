@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Система аутентификации с кэшированием и сессиями">
+    <meta name="author" content="Auth System">
+    <meta name="theme-color" content="#007bff">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>{% block title %}Система аутентификации{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="theme-light">
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="{% url 'index' %}">Auth System</a>
+            </div>
+            <div class="header-controls">
+                <div class="theme-switch header-theme-switch">
+                    <label class="switch">
+                        <input type="checkbox" id="themeToggle">
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="theme-labels">
+                        <span class="theme-icon light-icon"><i class="fas fa-sun"></i></span>
+                        <span class="theme-icon dark-icon"><i class="fas fa-moon"></i></span>
+                    </div>
+                </div>
+                {% if user.is_authenticated %}
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="{% url 'profile' %}"><i class="fas fa-user"></i> Профиль</a></li>
+                    </ul>
+                </nav>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Система аутентификации</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}?v={% now 'U' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html> 

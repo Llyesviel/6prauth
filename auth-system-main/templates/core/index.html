@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="auth-form">
+    <h1>Вход / Регистрация</h1>
+    <div class="form-container">
+        <form id="loginForm">
+            <h2>Вход</h2>
+            <input type="text" name="username" placeholder="Логин" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <button type="submit">Войти</button>
+        </form>
+        <form id="registerForm">
+            <h2>Регистрация</h2>
+            <input type="text" name="username" placeholder="Логин" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>
+{% endblock %} 

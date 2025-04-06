@@ -12,23 +12,23 @@
 
 1. Установите зависимости Python:
 ```bash
-pip install -r requirements.txt
+pip install -r auth-system-main/requirements.txt
 ```
 2. Примените миграции:
 ```bash
-python manage.py migrate
+python auth-system-main/manage.py migrate
 ```
 
 3. Создайте суперпользователя:
 ```bash
-python manage.py createsuperuser
+python auth-system-main/manage.py createsuperuser
 ```
 
 ## Запуск
 
 1. Запустите сервер разработки:
 ```bash
-python manage.py runserver
+python auth-system-main/manage.py runserver
 ```
 
 2. Откройте http://localhost:8000 в браузере
